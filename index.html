@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortear um número</title>
+    <style>
+        body {
+            background-color: #0c2638;
+        }
+
+        div.quadro {
+            height: 200px;
+            margin: 75px;
+            font-family: Arial, sans-serif;
+            background-color: #1a5080;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        button {
+            background-color: #26aeb3;
+            color: #ffffff;
+            border-radius: 15px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            transition: background-color 1s ease;
+        }
+
+        button:hover {
+            background-color: #68d4af;
+        }
+
+        input {
+            padding: 8px 10px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quadro">
+        <h1>Sorteio de Números Aleatórios</h1>
+        <label for="numeroMaximo">Número máximo:</label>
+        <input type="number" id="numeroMaximo" min="1" value="10">
+        <button id="gerarNumero">Gerar Número</button>
+        <p id="numeroAleatorio">Clique no botão para gerar um número aleatório.</p>
+    </div>
+
+    <script>
+        const numeroMaximoInput = document.getElementById("numeroMaximo");
+        const gerarNumero = document.getElementById("gerarNumero");
+        const numeroAleatorioResultado = document.getElementById("numeroAleatorio");
+
+        function gerarNumeroAleatorio() {
+            const numeroMaximo = parseInt(numeroMaximoInput.value);
+            if (!isNaN(numeroMaximo) && numeroMaximo >= 1) {
+                const numeroAleatorio = Math.floor(Math.random() * numeroMaximo) + 1;
+                numeroAleatorioResultado.textContent = `Número aleatório: ${numeroAleatorio}`;
+            } else {
+                numeroAleatorioResultado.textContent = "Insira um número válido.";
+            }
+        }
+
+        gerarNumero.addEventListener("click", gerarNumeroAleatorio);
+    </script>
+</body>
+
+</html>
